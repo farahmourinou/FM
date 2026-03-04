@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Detection & Translation | NLP Project</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        :root {
+            --ai-dark: #0f172a;
+            --ai-accent: #06b6d4; /* Cyan */
+            --ai-secondary: #6366f1; /* Indigo */
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        body {
+            background-color: var(--ai-dark);
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* --- HEADER --- */
+        .hero-header {
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+            padding: 80px 10% 40px;
+            border-bottom: 1px solid rgba(6, 182, 212, 0.2);
+            text-align: center;
+        }
+
+        .hero-header h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(to right, #fff, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .tech-stack-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid var(--ai-accent);
+            color: var(--ai-accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* --- MAIN CONTENT --- */
+        .project-container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 5%;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .glass-block {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .full-width { grid-column: span 2; }
+
+        h2 {
+            color: var(--ai-accent);
+            font-size: 1.4rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- VISUAL PIPELINE --- */
+        .pipeline-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin: 40px 0;
+        }
+
+        .step-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        .step-box {
+            flex: 1;
+            padding: 20px;
+            background: #1e293b;
+            border-radius: 15px;
+            border: 1px solid #334155;
+            transition: transform 0.3s;
+        }
+
+        .step-box:hover { transform: translateY(-5px); border-color: var(--ai-accent); }
+
+        .step-icon { font-size: 2rem; margin-bottom: 10px; }
+        .arrow { color: var(--ai-secondary); font-size: 1.5rem; font-weight: bold; }
+
+        /* --- ACCURACY CARD (CENTERED) --- */
+        .metric-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 200px;
+            border-left: 4px solid var(--ai-accent);
+        }
+
+        .metric-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            margin: 0;
+            font-family: 'Courier New', monospace; /* Tech feel */
+        }
+
+        .metric-label {
+            margin-top: 10px;
+            color: var(--ai-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+        }
+
+        .back-link {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; font-size: 0.95rem; color: #cbd5e1; }
+        b { color: var(--ai-accent); }
+    </style>
+</head>
+<body>
+
+    <header class="hero-header">
+        <a href="../index.html" class="back-link">← Portfolio Home</a>
+        <h1>Semi-Supervised Translation System</h1>
+        <div class="tech-stack-badges">
+            <span class="badge">Scikit-Learn</span>
+            <span class="badge">NLP</span>
+            <span class="badge">MarianMT</span>
+            <span class="badge">Hugging Face</span>
+            <span class="badge">Self-Training</span>
+        </div>
+    </header>
+
+    <main class="project-container">
+        
+        <div class="grid-layout">
+            <div class="glass-block full-width">
+                <h2>🌐 Project Mission</h2>
+                <p>
+                    Development of an intelligent system capable of <b>automatically identifying the language</b> of a text (English or French) and providing an <b>instant neural translation</b>. This system utilizes <b>Semi-Supervised Learning</b> to leverage unlabeled data, maximizing accuracy despite limited human-annotated samples.
+                </p>
+            </div>
+
+            <div class="glass-block">
+                <h2>🔍 Step 1: Language Detection</h2>
+                <p>An <b>MLP (Multi-Layer Perceptron)</b> base classifier is enhanced via <b>Self-Training</b>:</p>
+                
+                <ul>
+                    <li><b>TF-IDF Vectorization:</b> Numerical mapping of text relevance.</li>
+                    <li><b>Confidence Threshold:</b> Only predictions above <b>75%</b> are accepted as pseudo-labels.</li>
+                    <li><b>Robustness:</b> High-density manifolds are captured to refine decision boundaries.</li>
+                </ul>
+            </div>
+
+            <div class="glass-block">
+                <h2>🚀 Step 2: Neural Translation</h2>
+                <p>Integration of <b>MarianMT</b> from the Hugging Face Transformers library:</p>
+                
+                <ul>
+                    <li><b>Bi-directional:</b> Seamlessly handles English ➔ French and French ➔ English.</li>
+                    <li><b>Model:</b> Optimized Helsinki-NLP opus models for performance.</li>
+                    <li><b>Output:</b> High-fidelity translation maintaining grammatical context.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pipeline-container">
+            <h2>System Pipeline</h2>
+            <div class="step-wrapper" style="margin-top: 30px;">
+                <div class="step-box">
+                    <div class="step-icon">📄</div>
+                    <h3>Input</h3>
+                    <p style="font-size: 0.8rem;">Text Sequence</p>
+                </div>
+                <div class="arrow">➔</div>
+                <div class="step-box">
+                    <div class="step-icon">🤖</div>
+                    <h3>Detection</h3>
+                    <p style="font-size: 0.8rem;">Self-Training MLP</p>
+                </div>
+                <div class="arrow">➔</div>
+                <div class="step-box">
+                    <div class="step-icon">🔄</div>
+                    <h3>Translation</h3>
+                    <p style="font-size: 0.8rem;">MarianMT NMT</p>
+                </div>
+                <div class="arrow">➔</div>
+                <div class="step-box" style="border-color: var(--ai-accent);">
+                    <div class="step-icon">✅</div>
+                    <h3>Result</h3>
+                    <p style="font-size: 0.8rem;">Target Language</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-layout">
+            <div class="glass-block metric-card">
+                <span class="metric-value" id="accuracy-count">0.0000</span>
+                <p class="metric-label">Model Accuracy</p>
+            </div>
+
+            <div class="glass-block">
+                <h2>📈 Conclusion</h2>
+                <p>
+                    By combining graph-based structural analysis with iterative self-learning, the system achieved a remarkable accuracy of <b>99.87%</b>. This confirms that semi-supervised methods are superior in scenarios where labeled data is scarce but geometric data structure is strong.
+                </p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer style="text-align: center; padding: 40px; color: #475569; font-size: 0.8rem;">
+        &copy; 2026 Farah Mourinou | AI Engineering
+    </footer>
+
+    <script>
+        // Animation for the 0.9987 count
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = (progress * (end - start) + start).toFixed(4);
+                obj.innerHTML = value;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const obj = document.getElementById("accuracy-count");
+        // Start animation when page loads
+        window.onload = () => {
+            animateValue(obj, 0.0000, 0.9987, 2000);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain MRI Segmentation | AI Project</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        :root {
+            --ai-dark: #0f172a;
+            --ai-accent: #6366f1;
+            --ai-secondary: #06b6d4;
+            --glass: rgba(255, 255, 255, 0.03);
+            --danger: #ef4444;
+        }
+
+        body {
+            background-color: var(--ai-dark);
+            color: #f1f5f9;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* --- MODERN HEADER --- */
+        .hero-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            padding: 80px 10% 40px;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+            text-align: center;
+        }
+
+        .hero-header h1 {
+            font-size: 3rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        .tech-stack-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .badge {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid var(--ai-accent);
+            color: var(--ai-accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* --- CONTENT STRUCTURE --- */
+        .project-container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px 5%;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .glass-block {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .problem-box {
+            grid-column: span 2;
+            border-left: 4px solid var(--danger);
+            background: linear-gradient(to right, rgba(239, 68, 68, 0.05), transparent);
+        }
+
+        h2 {
+            color: var(--ai-secondary);
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        /* --- COMPACT INFERENCE PIPELINE --- */
+        .demo-section {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 24px;
+            padding: 30px;
+            text-align: center;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .comparison-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: nowrap; /* Forces everything on one line */
+        }
+
+        .img-card {
+            width: 180px; /* Smaller width to fit the line */
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 8px;
+            border: 1px solid #334155;
+            transition: 0.3s;
+        }
+
+        .img-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .img-card p {
+            margin-top: 10px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        .arrow-ai {
+            font-size: 1.5rem;
+            color: var(--ai-accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; transform: translateX(0); }
+            50% { opacity: 1; transform: translateX(5px); }
+            100% { opacity: 0.4; transform: translateX(0); }
+        }
+
+        .back-link {
+            color: #94a3b8;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover { color: #fff; }
+
+        ul { padding-left: 18px; font-size: 0.95rem; }
+        li { margin-bottom: 8px; }
+
+    </style>
+</head>
+<body>
+
+    <header class="hero-header">
+        <a href="../index.html" class="back-link">← Back to Portfolio</a>
+        <h1>Brain MRI Segmentation</h1>
+        <div class="tech-stack-badges">
+            <span class="badge">PyTorch</span>
+            <span class="badge">U-Net Architecture</span>
+            <span class="badge">Medical Imaging</span>
+        </div>
+    </header>
+
+    <main class="project-container">
+        
+        <div class="grid-layout">
+            <div class="glass-block problem-box">
+                <h2>⚠️ Problem Statement</h2>
+                <p>
+                    Manual MRI segmentation is <strong>time-intensive and subjective</strong>. In clinical settings, precise tissue 
+                    delineation is vital for diagnosing tumors and lesions. This project automates voxel-wise classification 
+                    to assist radiologists with high-speed, objective analysis.
+                </p>
+            </div>
+
+            <div class="glass-block">
+                <h2>🛠️ Methodology</h2>
+                <ul>
+                    <li><strong>Architecture:</strong> Configurable U-Net with depths 1-4.</li>
+                    <li><strong>Loss Function:</strong> Optimized with <code>CrossEntropyLoss</code>.</li>
+                    <li><strong>Data:</strong> Normalization of the IBSR medical dataset.</li>
+                </ul>
+            </div>
+
+            <div class="glass-block">
+                <h2>🧬 Tech Specs</h2>
+                <ul>
+                    <li>Encoder-Decoder with Skip Connections.</li>
+                    <li>Implementation of Adam Optimizer (1e-4).</li>
+                    <li>Evaluation via Dice Score.</li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="demo-section">
+            <h2>Inference Pipeline</h2>
+            <p style="font-size: 0.9rem; color: #94a3b8;">From raw medical data to high-precision semantic masks.</p>
+
+            <div class="comparison-flex">
+                <div class="img-card">
+                    <img src="input.png" alt="Raw MRI Input">
+                    <p>Input MRI</p>
+                </div>
+
+                <div class="arrow-ai">➔</div>
+
+                <div class="img-card" style="border-color: var(--ai-accent); background: rgba(99, 102, 241, 0.05);">
+                    <div style="height: 180px; display: flex; align-items: center; justify-content: center; font-family: monospace; font-size: 0.65rem; color: var(--ai-accent); line-height: 1.4;">
+                        CONV-BLOCKS<br>
+                        ↓↓↓<br>
+                        SKIP-CONN<br>
+                        ↓↓↓<br>
+                        UPSAMPLING
+                    </div>
+                    <p>U-Net Model</p>
+                </div>
+
+                <div class="arrow-ai">➔</div>
+
+                <div class="img-card" style="border-color: var(--ai-secondary);">
+                    <img src="output.png" alt="Segmented Output">
+                    <p style="color: var(--ai-secondary);">Output Mask</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer style="text-align: center; padding: 30px; color: #475569; font-size: 0.8rem;">
+        &copy; 2026 Farah Mourinou | AI Engineering
+    </footer>
+
+</body>
+</html>
